@@ -10,11 +10,7 @@ cat_name <- "Cyril"
 
 (?name)
 
-read_csv()
-Sys.Date()
-Sys.Time()
-getwd()
-?read_csv()
+
 
 
 sum(5,6,7,8)
@@ -61,7 +57,7 @@ ggplot(data=gapminder_1997)+
 RColorBrewer::display.brewer.all()
 
 #load in full gapminder dataset
-gapminder_data <-read_csv("un-report/gapminder_data.csv")
+gapminder_data <-read_csv("un-report/data/gapminder_data.csv")
 
 #useful ways to view very large datasets
 dim(gapminder_data)
@@ -109,7 +105,6 @@ ggplot(data = gapminder_data)+
   geom_violin()+
   geom_jitter(width = 0.05, alpha =0.2)
   
-
 
 
 
