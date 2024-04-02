@@ -105,6 +105,6 @@ ggplot(data = gapminder_data)+
   geom_violin()+
   geom_jitter(width = 0.05, alpha =0.2)
   
-
+ggsave("un-report/figures/another_plot.png")
 
 
