@@ -213,7 +213,8 @@ co2_emmisions_dirty %>% select(country, year, series, value)
 
 co2_emmisions_dirty %>% select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" 
-                         = "total_emissions", "Emissions per capita (metric tons of carbon dioxide)"
+                         = "total_emissions", 
+                         "Emissions per capita (metric tons of carbon dioxide)"
                          = "per_capita_emissions")) %>% 
   pivot_wider(names_from = series, values_from = value)
 
@@ -254,7 +255,8 @@ co2_emissions <- read_csv("un-report/data/co2-un-data.csv", skip=2,
                        "series","value", "footnotes","source")) %>% 
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" 
-                         = "total_emissions", "Emissions per capita (metric tons of carbon dioxide)"
+                         = "total_emissions", 
+                         "Emissions per capita (metric tons of carbon dioxide)"
                          = "per_capita_emissions")) %>% 
   pivot_wider(names_from = series, values_from = value)%>%
   filter(year == 2005) %>%
@@ -295,6 +297,21 @@ gapminder_co2 <- gapminder_co2 %>%
 
 #write out new clean dataset as a csv
 write.csv(gapminder_co2, "un-report/data/gapminder_co2.csv")
+
+##################################################################
+#Post lunch re-start - Writing Reports with R Markdown
+###############################################################
+
+
+
+
+
+
+
+
+
+
+
 
 
 
