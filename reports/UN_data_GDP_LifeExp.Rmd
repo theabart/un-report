@@ -9,21 +9,59 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r packages}
+```{r packages, include=FALSE}
 library(tidyverse)
 ```
+# Introduction
+
 This is a report and it was prepared for this workshop I'm in. Very important work. 
 GDP is 100% absolutely correlated to life expectancy and this report will show that.
 Dare I say it is evidence of causation!
 
-```{r}
+```{r, include=FALSE}
 gapminder_1997 <- read_csv("un-report/data/gapminder_1997.csv")
 ```
-```{r gdp_lifeExp_1997_plot}
+```{r gdp_lifeExp_1997_plot, echo=FALSE}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap, y = lifeExp, color = continent, size = pop/1e6) +
   geom_point() +
   labs(x= "GDP per cap", y = "Life Expectancy", title = "Do wealthy people live longer?",
        size = "Population (in millions)")
+```
+
+```{r, include=FALSE}
+nCountries <- gapminder_1997 %>% 
+  select(country) %>% 
+  n_distinct()
+
+minGDP <- gapminder_1997 %>% 
+  summarize(round(min(gdpPercap))) %>% 
+  pull()
+
+maxGDP <- gapminder_1997 %>% 
+  summarize(round(max(gdpPercap))) %>% 
+  pull()
+```
+### Data Explanation
+
+The above plot shows relationship between GDP per capita and life expectancy
+for the total of `r nCountries` countries. The max GDP was `r maxGDP` and the min
+was `r minGDP`.
+
+
+|Summary of Data|
+|----------|--------|
+|Number of Countries|`r nCountries`|
+|Min of GDP per capita|`r minGDP`|
+|Max of GDP per capita|`r maxGDP`|
+
+```{r, echo=FALSE}
+#load library
+library(knitr)
+
+#print kable
+gapminder_1997 %>% 
+  filter(continent == "Oceania") %>% 
+  kable()
 ```
 
